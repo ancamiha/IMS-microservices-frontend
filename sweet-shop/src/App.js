@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import CartContent from './pages/CartContent';
+import Order from './pages/Order';
 import './App.css';
 import Navbar from './components/Navbar';
 import React, { useEffect, useState } from 'react';
@@ -34,6 +35,7 @@ export default function App() {
           <Route path='/login' element={<Login updateLogin={(value) => setLoggedIn(value)} />} />
           <Route path='/products' element={<Products />}/>
           <Route path='/cart' element={<CartContent />} />
+          <Route path='/order' element={<Order />} />
         </Routes>
       </Router>
     </>

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import '../styles/navbar.css'
 import { NavLink } from 'react-router-dom'
 import NavBarObj from './NavBarObj'
-import { checkLogin } from '../apis/Auth';
 
 function Navbar(loggedIn) {
   
