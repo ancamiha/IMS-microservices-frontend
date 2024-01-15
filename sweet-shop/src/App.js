@@ -8,11 +8,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import React, { useEffect, useState } from 'react';
 import { checkLogin } from './apis/Auth';
-import { useNavigate } from "react-router-dom";
 
 export default function App() {
   const [ loggedIn, setLoggedIn ] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
