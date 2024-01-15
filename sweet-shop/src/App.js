@@ -6,16 +6,34 @@ import Products from './pages/Products';
 import CartContent from './pages/CartContent';
 import './App.css';
 import Navbar from './components/Navbar';
+import React, { useEffect, useState } from 'react';
+import { checkLogin } from './apis/Auth';
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
+  const [ loggedIn, setLoggedIn ] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await checkLogin();
+        console.log(response.data);
+        setLoggedIn(response.data);
+      } catch (error) { }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar loggedIn={loggedIn} />
         <Routes>
           <Route exact path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login updateLogin={(value) => setLoggedIn(value)} />} />
           <Route path='/products' element={<Products />}/>
           <Route path='/cart' element={<CartContent />} />
         </Routes>

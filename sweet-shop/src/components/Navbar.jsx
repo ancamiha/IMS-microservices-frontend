@@ -4,19 +4,8 @@ import { NavLink } from 'react-router-dom'
 import NavBarObj from './NavBarObj'
 import { checkLogin } from '../apis/Auth';
 
-function Navbar() {
-  const [ loggedIn, setLoggedIn ] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await checkLogin();
-        // console.log(response.data);
-        setLoggedIn(response.data);
-      } catch (error) { }
-    };
-
-    fetchData();
-  }, []);
+function Navbar(loggedIn) {
+  
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

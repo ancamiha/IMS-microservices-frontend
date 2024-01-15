@@ -5,7 +5,7 @@ import { RiShieldKeyholeFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (updateLogin) => {
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -21,7 +21,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      await  onLogin(values)
+      await onLogin(values)
       navigate('/products');
     } catch (error) {
       console.log(error.response)
