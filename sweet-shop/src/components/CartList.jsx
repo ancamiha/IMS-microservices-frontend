@@ -61,11 +61,19 @@ const CartList = () => {
   }, [userId]);
 
   const handleDeleteFromCart = (userId, product) => {
-    const prod = {userId: userId, product: product}
-    console.log(prod)
+    const prodToDel = products.find(p => p.id === product);
+    const prod = {userId: userId, product: prodToDel.id, price: prodToDel.price}
+    
     const deleteFromCart = async () => {
       try {
         const response = await deleteProdFromCart(prod);
+        const index = products.findIndex(p => p.id === prodToDel.id);
+        if (index !== -1) {
+          products.splice(index, 1);
+        }
+        setProducts(products);
+        setTotalPrice(totalPrice - prodToDel.price);
+
         console.log(response);
       } catch (error) { 
         console.log(error.response);
