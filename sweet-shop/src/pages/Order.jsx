@@ -37,8 +37,11 @@ function Order() {
     try {
       const response = await order(userId, orderDetails);
       console.log(response);
+      alert("Order placed successfully.")
+      navigate('/products')
     } catch (error) { 
       console.log(error.response);
+      alert("An error occured while placing the order, please try again.")
     }
   }
 
